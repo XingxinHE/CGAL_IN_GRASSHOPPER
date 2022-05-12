@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CGAL.Grasshopper.Win": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
