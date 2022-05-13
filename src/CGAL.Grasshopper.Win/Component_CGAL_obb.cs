@@ -1,3 +1,4 @@
+using CGAL.Wrapper;
 using Grasshopper;
 using Grasshopper.Kernel;
 using Rhino.Geometry;
@@ -6,7 +7,7 @@ using System.Collections.Generic;
 
 namespace CGAL.Grasshopper.Win
 {
-    public class Component_CGAL_Obb : GH_Component
+    public class Component_CGAL_obb : GH_Component
     {
         /// <summary>
         /// Each implementation of GH_Component must provide a public 
@@ -15,9 +16,9 @@ namespace CGAL.Grasshopper.Win
         /// Subcategory the panel. If you use non-existing tab or panel names, 
         /// new tabs/panels will automatically be created.
         /// </summary>
-        public Component_CGAL_Obb()
+        public Component_CGAL_obb()
           : base("Oriented Bounding Box", "Obb",
-            "Create an oriented bounding box with CGAL algorithm.",
+            "This is the oriented bounding box using CGAL algorithm.",
             "Mesh", "Util")
         {
         }
@@ -27,7 +28,7 @@ namespace CGAL.Grasshopper.Win
         /// </summary>
         protected override void RegisterInputParams(GH_Component.GH_InputParamManager pManager)
         {
-            pManager.AddMeshParameter("Mesh", "M", "The mesh as input", GH_ParamAccess.item);
+            pManager.AddMeshParameter("Mesh", "M", "The input for oriented bounding box is a mesh.", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -36,8 +37,8 @@ namespace CGAL.Grasshopper.Win
         protected override void RegisterOutputParams(GH_Component.GH_OutputParamManager pManager)
         {
             pManager.AddPointParameter("Points", "P", "The 8 points of the bounding box.", GH_ParamAccess.list);
-            pManager.AddBoxParameter("Box", "B", "The bounding box as box.", GH_ParamAccess.item);
-            pManager.AddBrepParameter("Brep", "B", "The the bounding box as brep.", GH_ParamAccess.item);
+            pManager.AddBoxParameter("Box", "B", "The bounding box as a box.", GH_ParamAccess.item);
+            pManager.AddBrepParameter("Brep", "B", "The bounding box as a brep.", GH_ParamAccess.item);
         }
 
         /// <summary>
@@ -48,17 +49,14 @@ namespace CGAL.Grasshopper.Win
         protected override void SolveInstance(IGH_DataAccess DA)
         {
             Mesh mesh = new Mesh();
-            if(!DA.GetData(0, ref mesh))
+            if (!DA.GetData(0, ref mesh))
             {
                 return;
             }
 
-            var points = CGAL.Wrapper.PolygonMeshProcessing.ObbAsPoint3d(mesh);
-            var box = CGAL.Wrapper.PolygonMeshProcessing.ObbAsBox(mesh);
-            var brep = CGAL.Wrapper.PolygonMeshProcessing.ObbAsBrep(mesh);
-            DA.SetDataList(0, points);
-            DA.SetData(1, box);
-            DA.SetData(2, brep);
+            DA.SetDataList(0, PolygonMeshProcessing.ObbAsPoint3d(mesh));
+            DA.SetData(1, PolygonMeshProcessing.ObbAsBox(mesh));
+            DA.SetData(2, PolygonMeshProcessing.ObbAsBrep(mesh));
         }
 
         /// <summary>
@@ -74,6 +72,6 @@ namespace CGAL.Grasshopper.Win
         /// It is vital this Guid doesn't change otherwise old ghx files 
         /// that use the old ID will partially fail during loading.
         /// </summary>
-        public override Guid ComponentGuid => new Guid("7FB173E4-DFE9-4F54-9CBD-E535E70E2906");
+        public override Guid ComponentGuid => new Guid("05EA4480-D89B-4E4F-A422-41AA5C0C18DA");
     }
 }

@@ -6,7 +6,6 @@
     <Title>CGAL.Grasshopper.Win</Title>
     <Description>Description of CGAL.Grasshopper.Win</Description>
     <TargetExt>.gha</TargetExt>
-    <PlatformTarget>x64</PlatformTarget>
     <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
   
@@ -25,7 +24,7 @@
   </PropertyGroup>
   
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="XCOPY &quot;$(TargetDir)*&quot; &quot;$(USERPROFILE)\AppData\Roaming\Grasshopper\Libraries\$(ProjectName)\&quot; /S /Y&#xD;&#xA;COPY &quot;$(TargetPath)&quot; &quot;$(USERPROFILE)\AppData\Roaming\Grasshopper\Libraries\$(ProjectName)\$(ProjectName).gha&quot;" />
+    <Exec Command="XCOPY &quot;$(TargetDir)&quot; &quot;$(USERPROFILE)\AppData\Roaming\Grasshopper\Libraries\$(ProjectName)\&quot; /S /Y&#xD;&#xA;COPY &quot;$(TargetPath)&quot; &quot;$(USERPROFILE)\AppData\Roaming\Grasshopper\Libraries\$(ProjectName)\$(ProjectName).gha&quot;" />
   </Target>
   
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent">

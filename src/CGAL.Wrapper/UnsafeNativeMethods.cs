@@ -13,9 +13,9 @@ namespace CGAL.Wrapper
 
         [DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]
         internal static extern void OrientedBoundingBoxBySurfaceMesh(
-            [MarshalAs(UnmanagedType.LPArray)] double[] vert_xyz_array, ulong vert_count,
-            [MarshalAs(UnmanagedType.LPArray)] int[] face_index_array, ulong faces_count,
-            ref IntPtr obb_xyz_array, ref int obb_pts_count
+            [MarshalAs(UnmanagedType.LPArray)]double[] vert_xyz_array, ulong vert_count,  /* input - mesh vertices */
+            [MarshalAs(UnmanagedType.LPArray)] int[] face_index_array, ulong faces_count, /* input - mesh faces */
+            ref IntPtr obb_pts_xyz                                                        /* output - obb as points */
         );
 
         [DllImport(DLL_NAME, CallingConvention = CallingConvention.Cdecl)]

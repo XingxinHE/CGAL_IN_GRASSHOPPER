@@ -15,7 +15,7 @@ namespace CGAL.Grasshopper.Win
         //Return a short string describing the purpose of this GHA library.
         public override string Description => "";
 
-        public override Guid Id => new Guid("5E0ED33C-C3A2-4BB8-8B2A-DF3FC19723BF");
+        public override Guid Id => new Guid("93AB2F74-BBC6-4E06-B5E0-08332AF44DEB");
 
         //Return a string identifying you or your company.
         public override string AuthorName => "";

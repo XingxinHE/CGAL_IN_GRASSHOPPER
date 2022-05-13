@@ -7,7 +7,10 @@
 #ifndef PCH_H
 #define PCH_H
 
-//macros
+// add headers that you want to pre-compile here
+#include "framework.h"
+
+// macros
 // Windows build
 #if defined (_WIN32)
 #if defined (CGALNATIVE_DLL_EXPORTS)
@@ -28,17 +31,15 @@
 #define CGALNATIVE_C_FUNCTION extern "C" __attribute__ ((visibility ("default")))
 #endif // __APPLE__
 
-// include CGAL Library
+
+// CGAL Library
 #include <CGAL/Exact_predicates_inexact_constructions_kernel.h>
 #include <CGAL/Surface_mesh.h>
 #include <CGAL/optimal_bounding_box.h>
-typedef CGAL::Exact_predicates_inexact_constructions_kernel   K;
-typedef K::Point_3                                            Point;
-typedef CGAL::Surface_mesh<Point>                             Surface_mesh;
-typedef CGAL::SM_Vertex_index                                 Vertex_index;
 
-
-// add headers that you want to pre-compile here
-#include "framework.h"
+typedef CGAL::Exact_predicates_inexact_constructions_kernel    K;
+typedef K::Point_3                                             Point;
+typedef CGAL::Surface_mesh<Point>                              Surface_mesh;
+typedef CGAL::SM_Vertex_index                                  Vertex_index;
 
 #endif //PCH_H

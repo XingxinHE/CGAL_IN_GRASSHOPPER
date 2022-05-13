@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{44DC3EE2-27C5-4813-8B23-38EDC74D5118}</ProjectGuid>
+    <ProjectGuid>{0F64D823-0ACD-4134-9DEA-EA0C4A522690}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>CGAL.Wrapper</RootNamespace>
